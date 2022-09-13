@@ -13,6 +13,54 @@ To run this project, you will need to add the following environment variables to
 
 `API_KEY`
 
+## Credential
+  -email: "admin@gmail.com"
+  -password: "12345qwerty"
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/rijalefendi/nodejs-in-kubernetes.git
+```
+
+Go to the project directory
+
+```bash
+  cd nodejs-in-kubernetes
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Build docker image
+
+```bash
+  ./script/docker_tag.sh
+```
+
+Push docker image
+
+```bash
+  ./script/docker_tag.sh
+```
+
+Apply deployment
+
+```bash
+  ./script/apply_deployment.sh
+```
+
+Expose service
+
+```bash
+  ./script/expose_service.sh
+```
+
 
 ## API Reference
 <details open>
@@ -110,3 +158,6 @@ To run this project, you will need to add the following environment variables to
 -Using the link, the collection will be imported into Postman automatically.
 
 </details>
+
+## Screen Shoot
+![ss](https://github.com/rijalefendi/nodejs-in-kubernetes/blob/main/ss.PNG?raw=true)
