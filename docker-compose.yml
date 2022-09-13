@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  nodejs-kubernetes-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs-image:1.0
+    container_name: nodejs-container
+    ports:
+      - '3002:3002'
+    depends_on:
+      - nodejs-kubernetes-mongo
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command:
+      - nodemon
+      - index.js
+  nodejs-kubernetes-mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - nodejs-kubernetes-mongo-volume:/data/db
+volumes:
+ nodejs-kubernetes-mongo-volume:
