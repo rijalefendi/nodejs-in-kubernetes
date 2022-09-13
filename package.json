@@ -1,0 +1,39 @@
+{
+  "name": "nodejs-in-kubernetes",
+  "version": "1.0.0",
+  "description": "deploy simple node js app from docker to kubernetes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rijalefendi/nodejs-in-kubernetes.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "mongo",
+    "docker",
+    "kubernetes"
+  ],
+  "author": "rijal efendi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rijalefendi/nodejs-in-kubernetes/issues"
+  },
+  "homepage": "https://github.com/rijalefendi/nodejs-in-kubernetes#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.0",
+    "mongoose-seed": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
