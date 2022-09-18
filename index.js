@@ -1,10 +1,11 @@
 require('dotenv').config();
 const express = require('express')
+const bcrypt = require('bcrypt')
 const app = express(); 
 const { userRouter, authRouter } =require ("./route")
 const port = process.env.PORT || 3002
 const mongoose = require('mongoose');
-const User = require("./model/user")
+const User = require("./model/user");
 const mongoString = "mongodb+srv://rijal6690:kenari121931@cluster0.7rja7lc.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -18,15 +19,34 @@ const newUsers = [
   "email": "admin@gmail.com",
   "name": "admin",
   "type": "admin",
-  "password": "12345qwerty"
+  "password": ""
   },
   {
-  "email": "admin@gmail.com",
-  "name": "admin",
-  "type": "admin",
-  "password": "12345qwerty"
+  "email": "user@gmail.com",
+  "name": "user",
+  "type": "user",
+  "password": ""
   }
 ];
+
+(async function hashingPass (datas)  {
+  const newDatas = datas.map(async (e) => {
+    const salt = await bcrypt.genSalt(10);
+    let hashPassword;
+    if (e.type === "admin") {
+      hashPassword = await bcrypt.hash("qwerty12345", salt);
+    } else {
+      hashPassword = await bcrypt.hash("qwerty67890", salt);
+    }
+    
+    e.password = hashPassword
+    return e.password
+  })
+  arrPromises = await Promise.allSettled(newDatas)
+
+})(newUsers)
+
+
 
 
 
@@ -41,7 +61,7 @@ const seedDb = async () => {
 }
 
 seedDb().then(() => {
-  mongoose.connection.close();
+  console.log("succed seeding")
 })
 
 app.use(express.json())
